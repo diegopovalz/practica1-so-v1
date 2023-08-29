@@ -40,7 +40,7 @@ void dijkstra(int graph[MAX_NODES][MAX_NODES], int num_nodes, int start_node) {
     pq_free(pq);
 
     // Print results
-    printf("Vertex\tDistance\tParent\n");
+    printf("Nodo\tDistancia\tAnterior\n");
     for (int i = 0; i < num_nodes; i++) {
         printf("%d\t%f\t%d\n", i, distance[i], parent[i]);
     }
