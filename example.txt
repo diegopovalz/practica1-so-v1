@@ -1,0 +1,1 @@
+(Medellin,Bogota,30);(Cali,Medellin,50);(Barranquilla,Medellin,80);(Cali,Bogota,20);

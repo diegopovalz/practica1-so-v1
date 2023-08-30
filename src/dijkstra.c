@@ -1,11 +1,9 @@
-#include <stdio.h>
-#include <stdlib.h>
+#include "../include/dijkstra.h"
+#include "../include/pq.h"
 #include <float.h>
-#include "pq.h"
+#include <stdio.h>
 
-#define MAX_NODES 20
-
-void dijkstra(int graph[MAX_NODES][MAX_NODES], int num_nodes, int start_node) {
+void dijkstra(int graph[MAX_NODES][MAX_NODES], int num_nodes, int start_node){
     double distance[MAX_NODES];
     int parent[MAX_NODES];
     PQ* pq = pq_create(num_nodes, 1); // Min heap
@@ -44,21 +42,4 @@ void dijkstra(int graph[MAX_NODES][MAX_NODES], int num_nodes, int start_node) {
     for (int i = 0; i < num_nodes; i++) {
         printf("%d\t%f\t%d\n", i, distance[i], parent[i]);
     }
-}
-
-int main() {
-	int num_nodes = 6;
-    int graph[MAX_NODES][MAX_NODES] = {
-        {0, 2, 0, 1, 0, 0},
-        {0, 0, 1, 0, 0, 0},
-        {0, 0, 0, 3, 0, 0},
-        {0, 0, 0, 0, 2, 4},
-        {0, 0, 0, 0, 0, 3},
-        {0, 0, 0, 0, 0, 0}
-    };
-    int start_node = 0;
-
-    dijkstra(graph, num_nodes, start_node);
-
-    return 0;
 }
