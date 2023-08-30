@@ -10,7 +10,7 @@ Input:
     char* dir: a string with the direction of the file.
     char* content: string that is going to save the read content.
  */
-void file_reader(char* dir, char *res);
+void read_file(char* dir, char *res);
 
 void string_to_map(char* map_str);
 

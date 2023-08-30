@@ -7,7 +7,7 @@
 int main(int argc, char** argv) {
 	int num_nodes = 6;
     char node_str[MAX_FILE_SIZE];
-    int graph[][MAX_NODES] = {
+    int graph[MAX_NODES][MAX_NODES] = {
         {0, 2, 0, 1, 0, 0},
         {0, 0, 1, 0, 0, 0},
         {0, 0, 0, 3, 0, 0},

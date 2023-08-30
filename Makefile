@@ -1,4 +1,4 @@
-flags=-Wall
+flags=-Wall -lbsd
 obj=gcc -c 
 out=gcc -o 
 name=first_practice
