@@ -7,7 +7,7 @@ icd=./include/
 build=./build/
 target=$(build)$(name)
 
-objs=src/main.o $(src)pq.o $(src)dijkstra.o $(src)utils.o
+objs=src/main.o $(src)pq.o $(src)dijkstra.o $(src)utils.o $(src)map.o
 
 all: compile clean
 
@@ -22,6 +22,9 @@ pq.o: $(src)pq.c $(icd)pq.h
 
 dijkstra.o: $(src)dijkstra.c $(icd)dijkstra.h
 	$(obj)$(src)/dijkstra.c
+
+map.o: $(src)map.c $(icd)map.h
+	$(obj)$(src)/map.c
 
 utils.o: $(src)utils.c $(icd)utils.h
 	$(obj)$(src)/utils.c

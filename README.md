@@ -9,7 +9,7 @@ make
 ~~~
 
 Once the program is compiled, execute the binary file of `build/` and give to it
-a file dir. you can do this with the next command.
+a file dir. You can do this with the next command.
 ~~~ bash
 ./build/first_practice example.txt
 ~~~

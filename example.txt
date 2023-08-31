@@ -1,1 +1,1 @@
-(Medellin,Bogota,30);(Cali,Medellin,50);(Barranquilla,Medellin,80);(Cali,Bogota,20);
+(cali,medellin,50);(medellin,bogota,30);(cali,bogota,20);(barranquilla,medellin,80);(bogota,medellin,40);(medellin,popayan,100);(medellin,cali,60);(bogota,barranquilla,80)
