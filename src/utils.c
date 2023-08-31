@@ -88,6 +88,9 @@ void create_map_and_node(Map* map, int graph[MAX_NODES][MAX_NODES], char* connec
         }
         weight = atoi(token);
         graph[value[0]][value[1]] = weight;
+        if (!directed) {
+            graph[value[1]][value[0]] = weight;
+        }
     }
     map_print(map);
 }
