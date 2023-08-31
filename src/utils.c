@@ -23,11 +23,25 @@ void read_file(char* dir, char* res){
     strlcpy(res, result, MAX_FILE_SIZE);
 }
 
-void string_splitting(char* init_str, char* string_list[MAX_NODES*(MAX_NODES-1)/2], int* substr_amount){
+void string_splitting(char* init_str, char* string_list[MAX_NODES*(MAX_NODES-1)/2], int* substr_amount, bool* directed) {
     char* token;    // Substring from the splitted initial string
     char* aux;      // Aux variable
     int amount;     // How many sub strings there are
     int size;       // Used as counter and limit
+
+    char is_directed[5];
+    char *newline = strchr(init_str, '\n');
+    if (newline != NULL) {
+        int length = newline - init_str;
+        strncpy(is_directed, init_str, length);
+        is_directed[length] = '\0';
+        if (strcmp(is_directed, "false") == 0) { // Check if graph is directed or not
+            *directed = false;
+        } else {
+            *directed = true;
+        }
+        memmove(init_str, newline + 1, strlen(newline + 1) + 1); // Skip first line
+    }
 
     /*
      * This portion of code can improve, but idk how to do it at the moment
@@ -58,7 +72,7 @@ void string_splitting(char* init_str, char* string_list[MAX_NODES*(MAX_NODES-1)/
     *substr_amount = amount;
 }
 
-void create_map_and_node(Map* map, int graph[MAX_NODES][MAX_NODES], char* connections[MAX_NODES*(MAX_NODES-1)/2], int num_rel){
+void create_map_and_node(Map* map, int graph[MAX_NODES][MAX_NODES], char* connections[MAX_NODES*(MAX_NODES-1)/2], int num_rel, bool directed) {
     char* token;    // Substring from the relation
     char aux[MAX_WORD_SIZE];      // Aux variable
     int weight;     // Aux variable
@@ -79,7 +93,7 @@ void create_map_and_node(Map* map, int graph[MAX_NODES][MAX_NODES], char* connec
 }
 
 void graph_print(int graph[MAX_NODES][MAX_NODES], int size){
-    printf("Printing the node:\n  ");
+    printf("Adjacency matrix:\n  ");
     for(int i = 0; i < size;i++) printf("\t%i", i);
     printf("\n");
     for(int i = 0; i < size; i++){
