@@ -3,12 +3,13 @@
 #include <stdbool.h>
 #include <float.h>
 #include "../include/dijkstra.h"
+#include "../include/dijkstra-nopq.h"
 #include "../include/utils.h"
 #include "../include/map.h"
 
 int main(int argc, char** argv) {
     // Original
-    int start_node = 0;
+    /* int start_node = 0;
 	int num_nodes = 6;
     int graph[MAX_NODES][MAX_NODES] = {
         {0, 2, 0, 1, 0, 0},
@@ -19,7 +20,7 @@ int main(int argc, char** argv) {
         {0, 0, 0, 0, 0, 0}
     };
     dijkstra(graph, num_nodes, start_node);
-    printf("\n\n");
+    printf("\n\n"); */
 
 
     // try of read the file.
@@ -36,7 +37,13 @@ int main(int argc, char** argv) {
     create_map_and_node(node_name, graph2, relations, num_relations, directed);
     graph_print(graph2, map_size(node_name));
 
+    printf("Dijkstra con Priority queues: \n");
+
     dijkstra(graph2, map_size(node_name), 1);
+
+    printf("\n\nDijkstra sin Priority queues: \n");
+
+    dijkstraNoPQ(graph2, map_size(node_name), 1);
 
     free(node_name);
     return 0;
