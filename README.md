@@ -9,7 +9,7 @@ make
 ~~~
 
 Once the program is compiled, execute the binary file of `build/` and give to it
-a file dir. You can do this with the next command.
+a file dir and and a zero or one that means if you will use priority queue or not. You can do this with the next command.
 ~~~ bash
-./build/first_practice example.txt
+./build/first_practice example.txt 0
 ~~~

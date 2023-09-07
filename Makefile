@@ -24,5 +24,8 @@ compile: $(objs)
 %.o: $(src)%.c $(icd)%.h
 	$(obj)$(src)%.c
 
+example%:
+	$(target) $@.txt 1
+
 clean:
 	rm $(objs)
