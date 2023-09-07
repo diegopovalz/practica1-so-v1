@@ -1,0 +1,2 @@
+false
+(cali,medellin,50);(medellin,bogota,30);(cali,bogota,20);(medellin,popayan,100);(bogota,barranquilla,80);(ibague,barranquilla,200)
