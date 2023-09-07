@@ -7,30 +7,22 @@ icd=./include/
 build=./build/
 target=$(build)$(name)
 
-objs=src/main.o $(src)pq.o $(src)dijkstra.o $(src)dijkstra-nopq.o $(src)utils.o $(src)map.o
+objs=src/main.o \
+	 $(src)pq.o \
+	 $(src)dijkstra.o \
+	 $(src)dijkstra-nopq.o \
+	 $(src)utils.o \
+	 $(src)map.o \
+	 $(src)user_interaction.o
 
 all: compile clean
 
 compile: $(objs)
+	@[ -d "$(build)" ] || { mkdir "$(build)"; }
 	$(out)$(target) $(objs) $(flags)
 
-main.o: $(src)main.c
-	$(obj)$(src)/main.c
-
-pq.o: $(src)pq.c $(icd)pq.h
-	$(obj)$(src)/pq.c
-
-dijkstra.o: $(src)dijkstra.c $(icd)dijkstra.h
-	$(obj)$(src)/dijkstra.c
-
-dijkstra-nopq.o: $(src)dijkstra-nopq.c $(icd)dijkstra-nopq.h
-	$(obj)$(src)/dijkstra-nopq.c
-
-map.o: $(src)map.c $(icd)map.h
-	$(obj)$(src)/map.c
-
-utils.o: $(src)utils.c $(icd)utils.h
-	$(obj)$(src)/utils.c
+%.o: $(src)%.c $(icd)%.h
+	$(obj)$(src)%.c
 
 clean:
 	rm $(objs)

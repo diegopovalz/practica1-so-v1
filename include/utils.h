@@ -3,7 +3,6 @@
 
 #define MAX_FILE_SIZE 1024 // macro which restrics max file size.
 
-#include <stdbool.h>
 #include "../include/dijkstra.h"
 #include "../include/map.h"
 
@@ -27,7 +26,7 @@ Input:
     char* string_list[]: string that is going to save substrings.
     int* substr_amount: resulting amount of substrings.
  */
-void string_splitting(char* init_str, char* string_list[MAX_NODES*(MAX_NODES-1)/2], int* substr_amount, bool* directed);
+void string_splitting(char* init_str, char* string_list[MAX_NODES*(MAX_NODES-1)/2], int* substr_amount, int* directed);
 
 /*
 Receives a list of relations as strings, make a map of the elements
@@ -42,7 +41,7 @@ Input:
     char* connections[]: string which saves all the connections.
     int num_rel: amount of relations.
  */
-void create_map_and_node(Map* map, int graph[MAX_NODES][MAX_NODES], char* connections[MAX_NODES*(MAX_NODES-1)/2], int num_rel, bool directed);
+void create_map_and_node(Map* map, int graph[MAX_NODES][MAX_NODES], char* connections[MAX_NODES*(MAX_NODES-1)/2], int num_rel, int directed);
 
 void graph_print(int graph[MAX_NODES][MAX_NODES], int size);
 

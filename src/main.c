@@ -1,6 +1,5 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <stdbool.h>
 #include <float.h>
 #include "../include/dijkstra.h"
 #include "../include/dijkstra-nopq.h"
@@ -29,7 +28,7 @@ int main(int argc, char** argv) {
     Map* node_name = map_create();
     int num_relations = 0;
     int graph2[MAX_NODES][MAX_NODES] = {0};
-    bool directed;
+    int directed;
 
 
     read_file(argv[1], node_str);

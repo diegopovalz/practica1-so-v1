@@ -1,11 +1,10 @@
-#include <stdbool.h>
 #include <float.h>
 #include <stdio.h>
 #include "../include/dijkstra-nopq.h"
 
-int minDistance(double dist[], bool sptSet[], int num_nodes) {
+int minDistance(double dist[], int sptSet[], int num_nodes) {
   double min = DBL_MAX;
-  int min_index;
+  int min_index = 0;
 
   for (int v = 0; v < num_nodes; v++) {
       if (!sptSet[v] && dist[v] < min) {
@@ -19,13 +18,13 @@ int minDistance(double dist[], bool sptSet[], int num_nodes) {
 
 void dijkstraNoPQ(int graph[MAX_NODES][MAX_NODES], int num_nodes, int start_node) {
   double dist[MAX_NODES]; // Array to store the shortest distances
-  bool sptSet[MAX_NODES]; // Set to keep track of visited nodes
+  int sptSet[MAX_NODES]; // Set to keep track of visited nodes
   int parent[MAX_NODES]; // Array to store parent nodes for constructing the path
 
   // Initialize distance, sptSet, and parent arrays
   for (int i = 0; i < num_nodes; i++) {
       dist[i] = DBL_MAX;
-      sptSet[i] = false;
+      sptSet[i] = 0;
       parent[i] = -1;
   }
 
@@ -35,7 +34,7 @@ void dijkstraNoPQ(int graph[MAX_NODES][MAX_NODES], int num_nodes, int start_node
   // Find shortest path for all nodes
   for (int count = 0; count < num_nodes - 1; count++) {
       int u = minDistance(dist, sptSet, num_nodes);
-      sptSet[u] = true;
+      sptSet[u] = 1;
 
       // Update dist[] values for adjacent vertices
       for (int v = 0; v < num_nodes; v++) {
