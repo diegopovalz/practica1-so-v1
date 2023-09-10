@@ -1,13 +1,16 @@
 #include "../include/user_interaction.h"
 #include <stdio.h>
+#include <ctype.h>
 #include <stdlib.h>
 
 int get_node(int node_capacity){
     int node = -1;
+    printf("Si eliges un nodo que sobrepase el límite, el programa acabará.\n");
     do{
         
         printf("Elige un nodo para analizar [0-%i]\n\t-> ", node_capacity - 1);
         scanf("%d", &node);
+        if(!isdigit(node)) return node_capacity;
     }while(!(node >= 0));
     return node;
 }
