@@ -23,7 +23,7 @@ void read_file(char* dir, char* res){
     strlcpy(res, result, MAX_FILE_SIZE);
 }
 
-void string_splitting(char* init_str, char* string_list[MAX_NODES*(MAX_NODES-1)/2], int* substr_amount, bool* directed) {
+void string_splitting(char* init_str, char* string_list[MAX_NODES*(MAX_NODES-1)/2], int* substr_amount, int* directed) {
     char* token;    // Substring from the splitted initial string
     char* aux;      // Aux variable
     int amount;     // How many sub strings there are
@@ -33,14 +33,11 @@ void string_splitting(char* init_str, char* string_list[MAX_NODES*(MAX_NODES-1)/
     char *newline = strchr(init_str, '\n');
     if (newline != NULL) {
         int length = newline - init_str;
-        strncpy(is_directed, init_str, length);
+        strlcpy(is_directed, init_str, length + 1);
         is_directed[length] = '\0';
-        if (strcmp(is_directed, "false") == 0) { // Check if graph is directed or not
-            *directed = false;
-        } else {
-            *directed = true;
-        }
-        memmove(init_str, newline + 1, strlen(newline + 1) + 1); // Skip first line
+        *directed = (strcmp(is_directed, "false") == 0) ? 0 : 1;
+        length = strlen(init_str);
+        strlcpy(init_str, newline + 1, length + 1); // Skip first line
     }
 
     /*
@@ -72,7 +69,7 @@ void string_splitting(char* init_str, char* string_list[MAX_NODES*(MAX_NODES-1)/
     *substr_amount = amount;
 }
 
-void create_map_and_node(Map* map, int graph[MAX_NODES][MAX_NODES], char* connections[MAX_NODES*(MAX_NODES-1)/2], int num_rel, bool directed) {
+void create_map_and_node(Map* map, int graph[MAX_NODES][MAX_NODES], char* connections[MAX_NODES*(MAX_NODES-1)/2], int num_rel, int directed) {
     char* token;    // Substring from the relation
     char aux[MAX_WORD_SIZE];      // Aux variable
     int weight;     // Aux variable
@@ -88,6 +85,7 @@ void create_map_and_node(Map* map, int graph[MAX_NODES][MAX_NODES], char* connec
         }
         weight = atoi(token);
         graph[value[0]][value[1]] = weight;
+        if (!directed) graph[value[1]][value[0]] = weight;
     }
     map_print(map);
 }
